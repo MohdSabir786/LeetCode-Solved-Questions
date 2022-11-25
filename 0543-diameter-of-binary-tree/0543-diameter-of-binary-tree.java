@@ -21,6 +21,39 @@ class Solution {
 //         int right = height(root.right);
 //         return Math.max(left, right)+1;
 //     }
+    /*
+    
+    class Solution {
+
+	static class data {
+		int ht;
+		int dia;
+		data (int dia, int ht){
+			this.dia = dia;
+			this.ht = ht;
+		}
+	}
+	
+	public static data diameterNode(Node root){
+		if(root == null) return new data(0,0);
+
+		data left_Dia = diameterNode(root.left);
+		data right_Dia = diameterNode(root.right);
+
+		int height = left_Dia.ht+ right_Dia.ht+1;
+		int dia = Math.max(height, Math.max(left_Dia.dia, right_Dia.dia));
+		int ht = Math.max ( left_Dia.ht, right_Dia.ht)+1;
+		return new data(dia, ht);
+	}
+   
+    public static int diameter(Node root) {
+        
+		data res = diameterNode(root);
+		return res.dia;
+    }
+	 
+}
+    */
     
     
     static class info{
