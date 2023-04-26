@@ -141,11 +141,11 @@ class Solution
         // add your code
         ArrayList<Integer> res = new ArrayList<>();
         if(root == null) return res;
-        HashMap<Integer,Node> hm = new HashMap<>();
+        TreeMap<Integer,Node> hm = new TreeMap<>();
         Queue<Info> q = new LinkedList<>();
         q.add(new Info(root,0));
-        int min = Integer.MAX_VALUE;
-        int max = Integer.MIN_VALUE;
+        // int min = Integer.MAX_VALUE;
+        // int max = Integer.MIN_VALUE;
         while(!q.isEmpty()){
             int size = q.size();
             
@@ -153,18 +153,21 @@ class Solution
                 Info rd = q.remove();
                 Node rn = rd.root;
                 int ht = rd.ht;
-                min = Math.min(min,ht);
-                max = Math.max(max,ht);
+                // min = Math.min(min,ht);
+                // max = Math.max(max,ht);
                 if(rn.left!=null) q.add(new Info(rn.left,ht-1));
                 if(rn.right!=null) q.add(new Info(rn.right,ht+1));
                 if(!hm.containsKey(ht))
                     hm.put(ht,rn);
             }
         }
-        for(int i=min; i<=max; i++){
-            Node rn = hm.get(i);
-            res.add(rn.data);
-            // res.add(hm.get(i).data);
+        // for(int i=min; i<=max; i++){
+        //     Node rn = hm.get(i);
+        //     res.add(rn.data);
+        //     // res.add(hm.get(i).data);
+        // }
+        for(int ht : hm.keySet()){
+            res.add(hm.get(ht).data);
         }
         return res;
         
